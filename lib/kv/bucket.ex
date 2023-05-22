@@ -28,6 +28,8 @@ defmodule KV.Bucket do
   Deletes 'key' from 'bucket'.any()
 
   Returns the current value of 'key', if 'key' exists.
+
+  &Map.pop(&1, key) == fn(bucket) -> Map.pop(bucket, key)
   """
   def delete(bucket, key) do
     Agent.get_and_update(bucket, &Map.pop(&1, key))
